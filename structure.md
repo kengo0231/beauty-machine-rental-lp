@@ -1,7 +1,7 @@
 # 美容マシン「月額0円レンタル」導入サロン募集LP 構成案+コピー全文
 
 - 作成日: 2026-09-13
-- ステータス: **in-production(プレビュー公開済み・要設定項目あり)**
+- ステータス: **in-production(v2デザイン刷新版をプレビュー公開・イメージ写真は仮画像・要設定項目あり)**
 - プレビューURL: https://kengo0231.github.io/beauty-machine-rental-lp/ (noindex / GitHub Pages・フォーム送信はダミー表示)
 - リポジトリ: https://github.com/kengo0231/beauty-machine-rental-lp
 - 出典: オーナー支給原稿2点 `最新フェイスマシン　レンタル.docx` / `美容マシンのレンタル料.docx`
@@ -12,6 +12,7 @@
 
 - 2026-09-13: 初版(draft)作成、オーナーへ提示
 - 2026-09-14: 要確認1〜3をオーナー承認。4はマニュアルから製品写真を抽出して解決。5はプレースホルダーで実装。コーディング完了→GitHub Pagesにプレビュー公開
+- 2026-09-14 (v2): オーナーFB「デザイン系統を変える(美容系・画像/図を多く)」「0円×3を大きく」「レンタルするとどうなるかが不明」「メニュー例が煩雑」を反映。白×ブラッシュピンク×ローズ(FREEZEWAVEはアイスブルー)に刷新。FVに0円カード3枚、MERITセクション(同時施術→時間単価UP/客単価UP/固定費UPなし)+タイムライン図+2名同時図+6カ月支払い棒グラフを新設。機種カードは収支式(売上−使用料=手元)+メニュー例3行に簡素化。イメージ写真9枚は `image-brief.md` の指示でChatGPT生成 → 届くまで同名の仮画像(ピンクのグラデーション)で公開中
 
 ---
 
@@ -327,3 +328,19 @@
 | 5 | `contact.php` | `$envelope_from` | `info@ohako-beautyresort.com` | 設置先サーバーのドメインのアドレス(ohako-beautyresort.com 配下に置くならそのまま) |
 | 6 | `contact.php` | `$to` | yokota / akita @big-youth.com | 本LPの通知先が同じでよいか要確認 |
 | 7 | サーバー | `service-account-key.json` | 未配置 | 4を使う場合のみ `contact.php` と同階層に配置(chmod 600・`.htaccess` で拒否済み) |
+
+## 7. イメージ写真の差し替え(v2・2026-09-14)
+
+- 生成指示書: `image-brief.md`(9枚・プロンプト付き)。現在は同名の**仮画像**(PLACEHOLDER表記入り)を `img/` に置いてレイアウト確認済み
+- 届いたら同じファイル名で `img/` に上書き → `git add -A && git commit && git push` でプレビュー反映(HTML/CSSの変更不要)
+
+| ファイル | 掲載箇所 | サイズ |
+|---|---|---|
+| `fv-hero-pc.jpg` / `fv-hero-sp.jpg` | FV背景(PC / SP) | 1536×1024 / 1024×1536 |
+| `merit-simul.jpg` | MERIT 図解1(同時施術)横 | 1536×1024 |
+| `merit-two-clients.jpg` | MERIT 図解2(2名同時)横 | 1536×1024 |
+| `owner-worry.jpg` | PROBLEM(悩み)横 | 1024×1024 |
+| `face-care.jpg` | 機種① カード上部(製品写真の右) | 1024×1024 |
+| `body-care.jpg` | 機種② カード上部(製品写真の右・寒色) | 1024×1024 |
+| `consult.jpg` | FLOW(導入の流れ)横 | 1536×1024(任意) |
+| `bg-texture.jpg` | フォームセクション背景 | 1536×1024(任意) |
