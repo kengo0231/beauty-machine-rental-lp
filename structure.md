@@ -1,7 +1,9 @@
 # 美容マシン「月額0円レンタル」導入サロン募集LP 構成案+コピー全文
 
 - 作成日: 2026-09-13
-- ステータス: **draft(オーナー承認待ち)**
+- ステータス: **in-production(プレビュー公開済み・要設定項目あり)**
+- プレビューURL: https://kengo0231.github.io/beauty-machine-rental-lp/ (noindex / GitHub Pages・フォーム送信はダミー表示)
+- リポジトリ: https://github.com/kengo0231/beauty-machine-rental-lp
 - 出典: オーナー支給原稿2点 `最新フェイスマシン　レンタル.docx` / `美容マシンのレンタル料.docx`
 - 参照ナレッジ: `knowledge/creative/lp-seminar.md`(**資料請求タイプ**の型に準拠)
 - 関連LP: `ohako-owner-lp`(FC募集)/ `watashino-dairiten-lp`(代理店募集)— フォーム・自動返信・シート連携の実装を流用
@@ -9,6 +11,7 @@
 ## 更新履歴
 
 - 2026-09-13: 初版(draft)作成、オーナーへ提示
+- 2026-09-14: 要確認1〜3をオーナー承認。4はマニュアルから製品写真を抽出して解決。5はプレースホルダーで実装。コーディング完了→GitHub Pagesにプレビュー公開
 
 ---
 
@@ -287,11 +290,11 @@
 
 ## 4. 要確認事項(オーナー)
 
-1. **1本のLPに2機種を載せる構成でよいか**(機種ごとに別LPにする場合は分割します)
-2. **CTAは資料請求フォームでよいか**(FC・代理店LPと同じ仕組み)。フォーム項目は上記の案でよいか
-3. **運営会社の表記**(GIANT SWING PRODUCTIONS / BIG YOUTH)
+1. ~~1本のLPに2機種を載せる構成でよいか~~ → **OK(2026-09-14 オーナー承認)**
+2. ~~CTAは資料請求フォームでよいか。フォーム項目は上記の案でよいか~~ → **OK(2026-09-14 オーナー承認)**
+3. ~~運営会社の表記~~ → **GIANT SWING PRODUCTIONS で確定(2026-09-14 オーナー承認)**
 4. ~~FREEZEWAVEの製品写真~~ → **解決(2026-09-14)**: オーナー支給のマニュアル2点から製品写真を抽出。FREEZEWAVEはオンダリフトとは別製品と確認
-5. **自動返信で送る資料(PDF)の有無**とURL / **デモ・相談の日程調整URL**(TimeRex等)の有無
+5. **自動返信で送る資料(PDF)のURL / デモ・相談の日程調整URL** → 資料未完成のため**プレースホルダーで実装(2026-09-14)**。確定後に下記「要設定項目」を差し替える
 
 ## 5. 制作仕様
 
@@ -312,3 +315,15 @@
 | `freezewave-ui.jpg` | 施術部位の画面(Localized Fat / Cellulite / Tightening) | 機種② 活用メニュー |
 
 ※ハンドピース・UI画面の表記は英語のまま。LP側で日本語キャプションを付けて補う
+
+## 6. 公開前の要設定項目(本番サーバーへ上げる前に必ず差し替え)
+
+| # | ファイル | 箇所 | 現在値 | 設定する値 |
+|---|---|---|---|---|
+| 1 | `contact.php` | `$doc_url` | `【ここに導入資料のURLを入れる】` | 導入資料(PDF/Drive)のURL |
+| 2 | `contact.php` | `$booking_url` | `【ここにデモ・ご相談の日程調整URLを入れる】` | TimeRex等の日程調整URL |
+| 3 | `thanks.html` | `data-todo="booking-url"` の `href="#"` | `#` | 2と同じ日程調整URL |
+| 4 | `contact.php` | `$sheet_id` / `$sheet_gid` | 空 / 0(CSVバックアップのみ) | リード管理スプレッドシートのID・タブgid(FC/代理店と同じサービスアカウントを共有可) |
+| 5 | `contact.php` | `$envelope_from` | `info@ohako-beautyresort.com` | 設置先サーバーのドメインのアドレス(ohako-beautyresort.com 配下に置くならそのまま) |
+| 6 | `contact.php` | `$to` | yokota / akita @big-youth.com | 本LPの通知先が同じでよいか要確認 |
+| 7 | サーバー | `service-account-key.json` | 未配置 | 4を使う場合のみ `contact.php` と同階層に配置(chmod 600・`.htaccess` で拒否済み) |
