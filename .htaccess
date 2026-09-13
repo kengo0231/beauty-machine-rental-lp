@@ -1,0 +1,31 @@
+# ------------------------------------------------------------
+# OHAKO 施設オーナー募集LP（https://ohako-beautyresort.com/fc/）
+#
+# ドメイン直下にWordPressが入っているため、親ディレクトリの
+# .htaccess のリライトルールが本ディレクトリに継承されないようにする。
+# ------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteEngine Off
+</IfModule>
+
+# index.html を優先（親に index.php がある構成のため明示する）
+DirectoryIndex index.html index.php
+
+# ディレクトリの中身を一覧表示させない
+Options -Indexes
+
+# 外部から直接見せないファイルを保護
+#   service-account-key.json … Googleシートへの書き込み鍵。漏れると第三者に悪用される
+#   submissions-backup.csv   … 個人情報が入る
+<FilesMatch "\.(md|sh|gs|csv|log|json)$">
+  Require all denied
+</FilesMatch>
+
+# 上記が効かないサーバー向けのフォールバック（Apache 2.2系）
+<IfModule !mod_authz_core.c>
+  <FilesMatch "\.(md|sh|gs|csv|log|json)$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>

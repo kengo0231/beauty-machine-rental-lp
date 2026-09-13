@@ -1,0 +1,6 @@
+.DS_Store
+_*.html
+service-account-key.json
+submissions-backup.csv
+submissions-log.csv
+.dedupe/
