@@ -64,8 +64,8 @@ $agree    = pick('agree');
 
 // 選択肢の表示名マッピング
 $machine_labels = [
-    'A' => '最新フェイスマシン',
-    'B' => 'FREEZEWAVE',
+    'A' => '小顔ケア(最新フェイスマシン)',
+    'B' => '痩身エステ(FREEZEWAVE)',
     'C' => '両方',
     'D' => '未定',
 ];
@@ -84,7 +84,7 @@ if ($salon    === '') $errors[] = 'サロン名';
 if ($name     === '') $errors[] = 'ご担当者名';
 if ($email    === '') $errors[] = 'メールアドレス';
 if ($tel      === '') $errors[] = '電話番号';
-if ($machine  === '') $errors[] = '導入を検討している機種';
+if ($machine  === '') $errors[] = '導入を検討しているメニュー';
 if ($shoptype === '') $errors[] = '店舗の形態';
 if ($agree    === '') $errors[] = '個人情報の取り扱いへの同意';
 if ($errors) {
