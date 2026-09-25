@@ -324,8 +324,8 @@
 | # | ファイル | 箇所 | 現在値 | 設定する値 |
 |---|---|---|---|---|
 | 1 | `contact.php` | `$doc_url` | `【ここに導入資料のURLを入れる】` | 導入資料(PDF/Drive)のURL |
-| 2 | `contact.php` | `$booking_url` | `【ここにデモ・ご相談の日程調整URLを入れる】` | TimeRex等の日程調整URL |
-| 3 | `thanks.html` | `data-todo="booking-url"` の `href="#"` | `#` | 2と同じ日程調整URL |
+| 2 | `contact.php` | `$booking_url` | ~~プレースホルダー~~ → **設定済み(2026-09-25)** https://timerex.net/s/0003377/b2ce438a | — |
+| 3 | `thanks.html` | 予約ボタンの `href` | ~~`#`~~ → **設定済み(2026-09-25)** 同上 | — |
 | 4 | `contact.php` | `$sheet_id` / `$sheet_gid` | 空 / 0(CSVバックアップのみ) | リード管理スプレッドシートのID・タブgid(FC/代理店と同じサービスアカウントを共有可) |
 | 5 | `contact.php` | `$envelope_from` | `info@ohako-beautyresort.com` | 設置先サーバーのドメインのアドレス(ohako-beautyresort.com 配下に置くならそのまま) |
 | 6 | `contact.php` | `$to` | yokota / akita @big-youth.com | 本LPの通知先が同じでよいか要確認 |
